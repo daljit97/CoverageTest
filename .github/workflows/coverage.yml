@@ -19,12 +19,6 @@ jobs:
          sudo apt-get update
          sudo apt-get install ninja-build 
 
-    - name: Get CMake
-      uses: lukka/get-cmake@latest
-    
-    - name: Print CMake version
-      run: cmake --version
-
     - name: configure
       run: cmake --preset coverage
 
