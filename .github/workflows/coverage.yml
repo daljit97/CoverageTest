@@ -30,3 +30,12 @@ jobs:
 
     - name: Report coverage
       run: gcovr
+
+    - name: Generate HTML report
+      run: mkdir html && gcovr --html --html-details -o html/coverage.html
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: html
