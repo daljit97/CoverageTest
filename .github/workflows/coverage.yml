@@ -32,10 +32,17 @@ jobs:
       run: gcovr
 
     - name: Generate HTML report
-      run: mkdir html && gcovr --html --html-details -o html/coverage.html
+      run: mkdir html && gcovr --html --html-details -o html/index.html
 
     - name: Upload coverage
       uses: actions/upload-artifact@v4
       with:
         name: coverage
         path: html
+
+    - name: HTML Preview
+      id: html_preview
+      uses: pavi2410/html-preview-action@v2
+      with:
+        html_file: 'html/coverage.html'
+      
