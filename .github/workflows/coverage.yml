@@ -17,7 +17,7 @@ jobs:
     - name: install dependencies
       run: |
          sudo apt-get update
-         sudo apt-get install ninja-build 
+         sudo apt-get install ninja-build gcovr
 
     - name: configure
       run: cmake --preset coverage
@@ -28,17 +28,5 @@ jobs:
     - name: Run tests
       run: ctest -T test -T coverage --test-dir build_coverage
 
-    - name: Setup LCOV
-      uses: hrishikesh-kadam/setup-lcov@v1
-    
-    - name: Generate LCOV files
-      run: lcov 
-        --directory ./build_coverage
-        --capture --output-file build_coverage/coverage.info
-
-    - name: Report code coverage
-      uses: zgosalvez/github-actions-report-lcov@v3
-      with:
-        coverage-files: build_coverage/coverage.info
-        artifact-name: code-coverage-report
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Report coverage
+      run: gcovr
