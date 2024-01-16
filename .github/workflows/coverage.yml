@@ -25,20 +25,20 @@ jobs:
     - name: build
       run: cmake --build build_coverage
 
-    - name: unit tests
-      run: cd build && ctest -T test -T coverage
+    - name: Run tests
+      run: ctest -T test -T coverage --test-dir build_coverage
 
     - name: Setup LCOV
       uses: hrishikesh-kadam/setup-lcov@v1
     
     - name: Generate LCOV files
       run: lcov 
-        --directory ./build
-        --capture --output-file build/coverage.info
+        --directory ./build_coverage
+        --capture --output-file build_coverage/coverage.info
 
     - name: Report code coverage
       uses: zgosalvez/github-actions-report-lcov@v3
       with:
-        coverage-files: build/coverage.info
+        coverage-files: build_coverage/coverage.info
         artifact-name: code-coverage-report
         github-token: ${{ secrets.GITHUB_TOKEN }}
