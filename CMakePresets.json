@@ -8,7 +8,7 @@
             "binaryDir" : "${sourceDir}/build_coverage",
             "cacheVariables" : {
                 "CMAKE_BUILD_TYPE" : "Debug",
-                "CMAKE_CXX_FLAGS" : "-fprofile-arcs -ftest-coverage",
+                "CMAKE_CXX_FLAGS" : "-fprofile-arcs -ftest-coverage"
             }
         }
     ]
