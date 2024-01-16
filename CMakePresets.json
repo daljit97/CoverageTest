@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "configurePresets" : [
+        {
+            "name" : "coverage",
+            "displayName" : "Enable code coverage",
+            "generator" : "Ninja",
+            "binaryDir" : "${sourceDir}/build_coverage",
+            "cacheVariables" : {
+                "CMAKE_BUILD_TYPE" : "Debug",
+                "CMAKE_CXX_FLAGS" : "-fprofile-arcs -ftest-coverage",
+            }
+        }
+    ]
+}
